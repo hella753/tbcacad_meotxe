@@ -2,6 +2,7 @@ import json
 import asyncio
 import aiohttp
 
+
 class AsyncVersion:
     def __init__(self, base_url):
         self.base_url = base_url
@@ -12,13 +13,11 @@ class AsyncVersion:
 
         await self.fetch_data(78)
 
-
     def get_tasks(self, session, idx):
         tasks = []
         for i in range(1, idx):
             tasks.append(asyncio.create_task(session.get(f"{self.base_url}{i}")))
         return tasks
-
 
     async def fetch_data(self, idx):
         async with aiohttp.ClientSession() as session:
