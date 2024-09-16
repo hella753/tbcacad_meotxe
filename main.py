@@ -10,7 +10,7 @@ def main():
 
     BASE_URL = "https://jsonplaceholder.typicode.com/posts/"
 
-    # uncomment for thread version
+    # uncomment for thread version. ხან ერთი ვერსია ჯობს ხან მეორე
     # thread_v = ThreadVersion(BASE_URL)
     # thread_v.run_threads()
 
