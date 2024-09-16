@@ -6,6 +6,7 @@ import aiohttp
 class AsyncVersion:
     def __init__(self, base_url):
         self.base_url = base_url
+        self.lock = asyncio.Lock()
 
     async def main_async(self):
         with open("data_async.json", "w") as start_file:
@@ -27,10 +28,11 @@ class AsyncVersion:
             for response in responses:
                 data = await response.json()
 
-                with open("data_async.json", "r") as outfile:
-                    data_list = json.load(outfile)
+                async with self.lock:
+                    with open("data_async.json", "r") as outfile:
+                        data_list = json.load(outfile)
 
-                data_list.append(data)
+                    data_list.append(data)
 
-                with open("data_async.json", "w") as outfile:
-                    json.dump(data_list, outfile, indent=2)
+                    with open("data_async.json", "w") as outfile:
+                        json.dump(data_list, outfile, indent=2)
