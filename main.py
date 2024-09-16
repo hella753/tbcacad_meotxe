@@ -3,6 +3,7 @@ import asyncio
 from thread_Version import ThreadVersion
 from async_Version import AsyncVersion
 
+
 def main():
     start = time.perf_counter()
     print(f"Start time: {start}")
@@ -21,6 +22,7 @@ def main():
 
     end = time.perf_counter()
     print(f"End time: {round(end - start, 2)}")
+
 
 if __name__ == "__main__":
     main()
